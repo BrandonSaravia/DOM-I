@@ -45,19 +45,25 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 ////////////////////////////////////////////////////////////// Nav
 
-/////// siteContent reference
-let navItems = siteContent['nav'];
+
+let selectedNavLinks = document.querySelectorAll("nav a");
+selectedNavLinks.forEach((link, i) => {
+  link.innerHTML = siteContent.nav[`nav-item-${i+1}`];
+})
+
+selectedNavLinks.forEach((link,i) => {
+  link.style.color = "green";
+})
 
 
-/////// href links
-const allHrefs = document.querySelectorAll('a');
-allHrefs[0].textContent = navItems['nav-item-1'];
-allHrefs[1].textContent = navItems['nav-item-2'];
-allHrefs[2].textContent = navItems['nav-item-3'];
-allHrefs[3].textContent = navItems['nav-item-4'];
-allHrefs[4].textContent = navItems['nav-item-5'];
-allHrefs[5].textContent = navItems['nav-item-6'];
-
+selectedNavLinks = document.getElementsByTagName("nav")[0];
+let createNewNode = (name) => {
+  let newNode = document.createElement("a");
+  newNode.innerHTML = name;
+  return newNode;
+}
+selectedNavLinks.prepend(createNewNode("First"));
+selectedNavLinks.append(createNewNode("Last"));
 
 
 ////////////////////////////////////////////////////////////// Cta
